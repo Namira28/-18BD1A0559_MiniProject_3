@@ -1,0 +1,38 @@
+.c1{
+    text-align: center;
+}
+.c2{
+    text-decoration: none;
+}
+
+table, th, td{
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+th, td{
+    padding:15px;
+    text-align:left;
+}
+
+th{
+    background-color: rgb(23, 23, 117);
+    color:white;
+}
+
+tr:nth-child(even){
+    background-color: rgb(208, 193, 219);
+}
+tr:nth-child(odd){
+    background-color:rgb(255, 255, 255);
+}
+
+table tr:hover{
+    background-color: rgb(179, 127, 216);
+}
+
+
+
+.center{
+    margin-left:auto;
+    margin-right: auto;
+}

@@ -1,0 +1,123 @@
+<html lang="en">
+
+<head>
+  <title>TS Ration Shop</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content='width=device-width'>
+  <link rel="stylesheet" href="styles.css">
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
+  <!-- SweetAlert2 -->
+  <link rel="stylesheet" href="../../plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
+
+
+</head>
+
+<body class="hold-transition sidebar-mini">
+
+  <!-- jQuery -->
+  <script src="../../plugins/jquery/jquery.min.js"></script>
+  <!-- Bootstrap 4 -->
+  <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- AdminLTE App -->
+  <script src="../../dist/js/adminlte.min.js"></script>
+  <!-- AdminLTE for demo purposes -->
+  <script src="../../dist/js/demo.js"></script>
+  <!-- SweetAlert2 -->
+  <script src="../../plugins/sweetalert2/sweetalert2.min.js"></script>
+
+
+  <!-- ChartJS -->
+  <script src="../../plugins/chart.js/Chart.min.js"></script>
+  
+  <div class="card">
+    <div class="card-header">
+     <h4> Graphical representation </h4>
+    </div>
+  </div>
+
+
+  <script>
+    $(function () {
+     
+      var areaChartData = {
+        labels : "<%= mydata[0] %>".split(','),
+      
+        datasets: [
+          {
+            label               : 'Stock',
+            backgroundColor     : 'rgba(60,141,188,0.9)',
+            borderColor         : 'rgba(60,141,188,0.8)',
+            pointRadius          : false,
+            pointColor          : '#3b8bba',
+            pointStrokeColor    : 'rgba(60,141,188,1)',
+            pointHighlightFill  : '#fff',
+            pointHighlightStroke: 'rgba(60,141,188,1)',
+            data   : "<%= mydata[1] %>".split(',')
+            
+         
+          },
+         
+        ]
+      }
+      console.log("<%= mydata[0] %>".split(','));
+      console.log("<%= mydata[1] %>".split(','));
+       //-------------
+    //- BAR CHART -
+    //-------------
+    var barChartCanvas = $('#barChart').get(0).getContext('2d')
+    var barChartData = $.extend(true, {}, areaChartData)
+    var temp0 = areaChartData.datasets[0]
+    barChartData.datasets[0] = temp0
+
+    var barChartOptions = {
+      responsive              : true,
+      maintainAspectRatio     : false,
+      datasetFill             : false
+    }
+
+    new Chart(barChartCanvas, {
+      type: 'bar',
+      data: barChartData,
+      options: barChartOptions
+    })
+})
+</script> 
+
+
+
+
+  <div class="card card-success">
+    <div class="card-header">
+      <h3 class="card-title">Bar Chart</h3>
+      
+      <div class="card-tools">
+        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+          <i class="fas fa-minus"></i>
+        </button>
+        <button type="button" class="btn btn-tool" data-card-widget="remove">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="chart">
+        <canvas id="barChart" style="min-height: 250px; height: 250px; 
+            max-height: 250px; max-width: 100%;"></canvas>
+      </div>
+    </div>
+    <!-- /.card-body -->
+  </div>
+  <!-- /.card -->
+
+
+
+
+</body>
+
+</html>
